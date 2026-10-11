@@ -83,8 +83,6 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
         />
       </motion.div>
 
-
-
       <AnimatePresence>
         {videoEnded && (
           <motion.div

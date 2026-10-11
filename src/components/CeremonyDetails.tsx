@@ -37,10 +37,6 @@ export const CeremonyDetails: React.FC<CeremonyDetailsProps> = ({ event = 'both'
           <span className="italic font-light font-['Pinyon_Script',_cursive] text-6xl sm:text-7xl lg:text-8xl">Tradition & Love</span>
         </h2>
 
-        <p className="font-sans text-sm sm:text-base leading-relaxed mb-20 max-w-2xl mx-auto text-[#FDFBF7]/90 tracking-wide">
-          We are honored to invite you to witness the beginning of our forever as we exchange vows, surrounded by the warmth and love of our cherished family and friends.
-        </p>
-
         {/* Details Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full max-w-4xl mx-auto items-start relative before:absolute before:inset-0 before:bg-[#FDFBF7]/5 before:rounded-3xl before:backdrop-blur-md before:border before:border-[#FDFBF7]/20 p-8 sm:p-12 shadow-2xl">
           {/* Date */}

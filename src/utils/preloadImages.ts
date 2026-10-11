@@ -22,4 +22,5 @@ export const INVITATION_IMAGE_URLS = [
   '/IMG_6942.JPG.jpeg',
   '/IMG_6945.JPG.jpeg',
   '/ivory_satin_bow-removebg-preview.png',
+  '/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png',
 ] as const;

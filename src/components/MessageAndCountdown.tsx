@@ -28,17 +28,6 @@ export const MessageAndCountdown: React.FC<Props> = ({ targetDate }) => {
       {/* Top Message Section */}
       <div className="w-full bg-[#FDFBF7] pt-16 pb-56 sm:pt-24 sm:pb-48 flex flex-col items-center justify-center px-4 relative z-10 overflow-hidden">
         
-        {/* Decorative vertical pearls */}
-        <img 
-          src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png" 
-          alt="" 
-          className="absolute top-8 left-2 sm:left-12 w-12 sm:w-20 opacity-70 pointer-events-none mix-blend-multiply z-0" 
-        />
-        <img 
-          src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png" 
-          alt="" 
-          className="absolute top-1/2 right-2 sm:right-12 w-12 sm:w-20 opacity-70 pointer-events-none mix-blend-multiply z-0 transform scale-y-[-1]" 
-        />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

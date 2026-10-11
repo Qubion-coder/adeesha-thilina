@@ -66,12 +66,26 @@ export function InvitationContent({
         <MessageAndCountdown targetDate={weddingDate} />
       </DeferredMount>
 
-      <DeferredMount active={active} delay={120} minHeight="40vh">
+      <div>
         <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-blush via-white to-brand-blush relative overflow-hidden">
+          <img
+            src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png"
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="absolute top-1/2 -left-[45%] sm:left-0 z-0 h-[130%] sm:h-[145%] w-auto max-w-none -translate-y-1/2 opacity-55 pointer-events-none select-none mix-blend-multiply"
+          />
+          <img
+            src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png"
+            alt=""
+            loading="eager"
+            decoding="async"
+            className="absolute top-1/2 -right-[45%] sm:right-0 z-0 h-[130%] sm:h-[145%] w-auto max-w-none -translate-y-1/2 opacity-55 pointer-events-none select-none mix-blend-multiply transform scale-y-[-1]"
+          />
 
           <CoupleDetails />
         </div>
-      </DeferredMount>
+      </div>
 
       <DeferredMount active={active} delay={180} minHeight="40vh">
         <CeremonyDetails event={eventParam} />

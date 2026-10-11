@@ -5,11 +5,7 @@ import { Heart } from 'lucide-react';
 const events = [
   { time: '09:00 AM', title: 'Guest Arrival', desc: 'Welcome and seating' },
   { time: '09:15 AM', title: 'Poruwa', desc: 'Traditional ceremony' },
-  { time: '10:30 AM', title: 'Bar Opens', desc: 'Liquor served' },
   { time: '12:00 PM', title: 'Lunch', desc: 'Wedding feast' },
-  { time: '12:45 PM', title: 'Dancing', desc: 'Join us on the dance floor' },
-  { time: '01:50 PM', title: 'Cake Cutting', desc: 'Sweet celebrations' },
-  { time: '02:00 PM', title: 'Band Playing', desc: 'Live music & jam session' },
   { time: '03:30 PM', title: 'Grand Exit', desc: 'Send off the newlyweds' },
 ];
 

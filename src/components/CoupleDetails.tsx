@@ -5,18 +5,6 @@ import { Sparkles, Heart } from 'lucide-react';
 export const CoupleDetails: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
-      {/* Decorative vertical pearls */}
-      <img 
-        src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png" 
-        alt="" 
-        className="absolute top-20 -left-4 sm:left-0 lg:-left-12 w-16 sm:w-24 opacity-80 pointer-events-none mix-blend-multiply z-0" 
-      />
-      <img 
-        src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png" 
-        alt="" 
-        className="absolute bottom-20 -right-4 sm:right-0 lg:-right-12 w-16 sm:w-24 opacity-80 pointer-events-none mix-blend-multiply z-0 transform scale-y-[-1]" 
-      />
-
       {/* Decorative ambient background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-brand-lavender/15 to-transparent rounded-full blur-[100px] pointer-events-none z-0" />
 
