@@ -8,7 +8,7 @@ interface CeremonyDetailsProps {
 
 export const CeremonyDetails: React.FC<CeremonyDetailsProps> = ({ event = 'both' }) => {
   return (
-    <section className="relative w-full bg-[#ea6a29] py-32 md:py-48 flex flex-col items-center justify-center px-4 overflow-visible z-20">
+    <section className="relative w-full bg-[#b58466] py-32 md:py-48 flex flex-col items-center justify-center px-4 overflow-visible z-20">
       {/* Top Lace Border */}
       <img 
         loading="lazy" 
@@ -41,34 +41,34 @@ export const CeremonyDetails: React.FC<CeremonyDetailsProps> = ({ event = 'both'
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full max-w-4xl mx-auto items-start relative before:absolute before:inset-0 before:bg-[#FDFBF7]/5 before:rounded-3xl before:backdrop-blur-md before:border before:border-[#FDFBF7]/20 p-8 sm:p-12 shadow-2xl">
           {/* Date */}
           <div className="flex flex-col items-center relative z-10">
-            <div className="w-14 h-14 bg-[#ea6a29] rounded-full border border-[#FDFBF7]/40 flex items-center justify-center mb-6 shadow-lg">
+            <div className="w-14 h-14 bg-[#b58466] rounded-full border border-[#FDFBF7]/40 flex items-center justify-center mb-6 shadow-lg">
               <Calendar className="w-6 h-6 text-[#FDFBF7]" />
             </div>
             <h4 className="font-['Cormorant_Garamond',_serif] text-3xl mb-3 text-[#FDFBF7]">The Date</h4>
             <p className="font-sans text-[13px] uppercase tracking-widest text-[#FDFBF7]/90 font-medium">
-              October 22, 2026
+              December 10, 2026
             </p>
           </div>
 
           {/* Time */}
           <div className="flex flex-col items-center relative z-10 md:border-x md:border-[#FDFBF7]/20 px-4">
-            <div className="w-14 h-14 bg-[#ea6a29] rounded-full border border-[#FDFBF7]/40 flex items-center justify-center mb-6 shadow-lg">
+            <div className="w-14 h-14 bg-[#b58466] rounded-full border border-[#FDFBF7]/40 flex items-center justify-center mb-6 shadow-lg">
               <Clock className="w-6 h-6 text-[#FDFBF7]" />
             </div>
             <h4 className="font-['Cormorant_Garamond',_serif] text-3xl mb-3 text-[#FDFBF7]">Poruwa</h4>
             <p className="font-sans text-[13px] uppercase tracking-widest text-[#FDFBF7]/90 font-medium">
-              09:15 AM
+              10:25 AM
             </p>
           </div>
 
           {/* Venue */}
           <div className="flex flex-col items-center relative z-10">
-            <div className="w-14 h-14 bg-[#ea6a29] rounded-full border border-[#FDFBF7]/40 flex items-center justify-center mb-6 shadow-lg">
+            <div className="w-14 h-14 bg-[#b58466] rounded-full border border-[#FDFBF7]/40 flex items-center justify-center mb-6 shadow-lg">
               <MapPin className="w-6 h-6 text-[#FDFBF7]" />
             </div>
             <h4 className="font-['Cormorant_Garamond',_serif] text-3xl mb-3 text-[#FDFBF7]">The Venue</h4>
             <p className="font-sans text-[13px] uppercase tracking-widest text-[#FDFBF7]/90 text-center font-medium leading-relaxed">
-              Mahogany Ballroom, <br/>Cinnamon Grand
+              Raffles, <br/>Nugegoda
             </p>
           </div>
         </div>

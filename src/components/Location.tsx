@@ -9,12 +9,12 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
   const venues = [
     {
       id: 'ceremony',
-      name: "Shangri-La",
-      city: "Colombo",
-      quote: "Experience the elegance of Shangri-La Colombo, where our beautiful celebration will take place overlooking the Indian Ocean.",
-      description: "We recommend arriving a little early to enjoy the stunning views and settle in before the ceremony begins.",
-      liveLocationUrl: "https://maps.app.goo.gl/7wcd6uLHpY8HevN66?g_st=ic",
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI1sXqWVed-sWC3IIOgfiWPsV-CMQVnzVr0_vPA1Zz5elOJbFSt7H87MG2&s=10",
+      name: "Raffles",
+      city: "Nugegoda",
+      quote: "Join us at Raffles, Nugegoda, where our beautiful celebration will take place on the 10th of December 2026.",
+      description: "Guests are kindly requested to arrive by 10.00 AM. The auspicious Poruwa Ceremony begins at 10.25 AM.",
+      liveLocationUrl: "https://share.google/Njhd8xVJRSZuXxl4t",
+      imageUrl: "/Screenshot 2026-10-18 035242.png",
       label: "Location"
     }
   ];
@@ -28,41 +28,63 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-md mx-auto text-center mix-blend-multiply"
+            className="max-w-md mx-auto text-center"
           >
-            <h2 className="font-['Cormorant_Garamond',_serif] text-5xl md:text-7xl text-[#ea6a29] leading-none mb-6">
+            <h2 className="font-['Cormorant_Garamond',_serif] text-5xl md:text-7xl text-brand-ink leading-none mb-6">
               {venue.label}
             </h2>
-            <p className="font-['Pinyon_Script',_cursive] text-[38px] md:text-[50px] text-[#ea6a29] mt-6 leading-none">
+            <p className="font-['Pinyon_Script',_cursive] text-[38px] md:text-[50px] text-brand-ink mt-6 leading-none">
               {venue.name}
             </p>
-            <p className="font-['Cormorant_Garamond',_serif] text-[#ea6a29]/70 text-base md:text-lg mt-4 uppercase tracking-[0.15em]">
+            <p className="font-['Cormorant_Garamond',_serif] text-brand-ink/70 text-base md:text-lg mt-4 uppercase tracking-[0.15em]">
               {venue.city}
             </p>
             
-            <p className="text-[#ea6a29]/80 text-[12px] md:text-[13px] font-sans leading-relaxed mt-8">
+            <p className="text-brand-ink/80 text-[12px] md:text-[13px] font-sans leading-relaxed mt-8">
               {venue.quote}
             </p>
-            <p className="text-[#ea6a29]/80 text-[12px] md:text-[13px] font-sans leading-relaxed mt-4">
+            <p className="text-brand-ink/80 text-[12px] md:text-[13px] font-sans leading-relaxed mt-4">
               {venue.description}
             </p>
             
-            <div className="relative left-1/2 -translate-x-1/2 w-[70%] md:w-[60%] max-w-none mt-8">
-              <img 
-                loading="lazy" 
-                decoding="async" 
-                src={venue.imageUrl} 
-                alt={`Illustration of the ${venue.name}`} 
-                className="w-full h-auto object-cover select-none pointer-events-none rounded-t-[50%] rounded-b-[50%] aspect-[3/4] border border-[#ea6a29]/30 p-1" 
-                draggable="false" 
-              />
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: 'easeOut' }}
+              className="relative mx-auto mt-14 w-[92%] max-w-[440px]"
+            >
+              {/* Offset outline */}
+              <div className="absolute -inset-3 sm:-inset-4 rounded-t-[50%_32%] rounded-b-2xl border border-[#b58466]/45 pointer-events-none" />
+
+              {/* Framed photo */}
+              <div className="relative rounded-t-[50%_32%] rounded-b-xl bg-[#e4c1ae] p-1.5 shadow-[0_25px_50px_-12px_rgba(110,70,54,0.45)]">
+                <div className="relative overflow-hidden rounded-t-[50%_32%] rounded-b-lg aspect-[3/2]">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={venue.imageUrl}
+                    alt={`${venue.name}, ${venue.city}`}
+                    className="absolute inset-0 w-full h-full object-cover object-[center_60%] select-none pointer-events-none"
+                    draggable="false"
+                  />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-[#e4c1ae]/40 rounded-t-[50%_32%] rounded-b-lg pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Ornament */}
+              <div className="flex items-center justify-center gap-3 mt-8">
+                <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#b58466]/60" />
+                <div className="w-1.5 h-1.5 rotate-45 bg-[#ba8281]" />
+                <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#b58466]/60" />
+              </div>
+            </motion.div>
             
             <a 
               href={venue.liveLocationUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="inline-block mt-8 rounded-full border border-[#ea6a29]/35 px-14 py-4 text-[#ea6a29]/80 hover:text-[#ea6a29] hover:bg-[#ea6a29]/10 transition-colors"
+              className="inline-block mt-8 rounded-full border border-[#b58466]/35 px-14 py-4 text-brand-ink/80 hover:text-brand-ink hover:bg-[#b58466]/10 transition-colors"
             >
               <span className="block font-sans text-xs tracking-[0.18em] uppercase">Get Directions</span>
             </a>

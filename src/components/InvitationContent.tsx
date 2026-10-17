@@ -8,6 +8,8 @@ import { Timeline } from './Timeline';
 import { MessageAndCountdown } from './MessageAndCountdown';
 import { RSVPForm } from './RSVPForm';
 import { ThankYouSection } from './ThankYouSection';
+import { GoodbyeVideo } from './GoodbyeVideo';
+import { FloatingPetals } from './FloatingPetals';
 
 import { InviteeBanner } from './InviteeBanner';
 import { DeferredMount } from './DeferredMount';
@@ -45,7 +47,9 @@ export function InvitationContent({
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
         onClick={onToggleMusic}
-        className="fixed top-6 right-6 z-50 w-12 sm:w-14 h-12 sm:h-14 bg-white/70 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(176,137,104,0.15)] flex items-center justify-center border border-brand-lavender/50 text-brand-plum hover:scale-105 transition-all duration-300"
+        data-music-toggle
+        aria-label={isMusicPlaying ? 'Pause music' : 'Play music'}
+        className="fixed top-6 right-6 z-50 w-12 sm:w-14 h-12 sm:h-14 bg-[#e4c1ae]/70 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(176,137,104,0.15)] flex items-center justify-center border border-brand-lavender/50 text-brand-ink hover:scale-105 transition-all duration-300"
       >
         {isMusicPlaying ? (
           <Music className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -53,6 +57,8 @@ export function InvitationContent({
           <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" />
         )}
       </motion.button>
+
+      <FloatingPetals />
 
       <Hero event={eventParam} inviteeName={fullInviteeName} />
 
@@ -67,7 +73,7 @@ export function InvitationContent({
       </DeferredMount>
 
       <div>
-        <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-blush via-white to-brand-blush relative overflow-hidden">
+        <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-blush via-[#e4c1ae] to-brand-blush relative overflow-hidden">
           <img
             src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png"
             alt=""
@@ -92,7 +98,7 @@ export function InvitationContent({
       </DeferredMount>
 
       <DeferredMount active={active} delay={240} minHeight="40vh">
-        <div className="pt-24 pb-12 sm:py-32 bg-gradient-to-b from-white via-brand-rose/30 to-brand-blush relative overflow-hidden">
+        <div className="pt-24 pb-12 sm:py-32 bg-gradient-to-b from-[#e4c1ae] via-brand-rose/30 to-brand-blush relative overflow-hidden">
           <Location event={eventParam} />
         </div>
       </DeferredMount>
@@ -113,13 +119,17 @@ export function InvitationContent({
         <ThankYouSection />
       </DeferredMount>
 
+      <DeferredMount active={active} delay={500} minHeight="40vh">
+        <GoodbyeVideo />
+      </DeferredMount>
+
       <DeferredMount active={active} delay={520}>
-        <footer className="py-12 bg-white border-t border-brand-lavender/20 text-center relative overflow-hidden mt-10">
+        <footer className="py-12 bg-[#e4c1ae] border-t border-brand-lavender/20 text-center relative overflow-hidden mt-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-lavender/10 blur-[80px] rounded-full pointer-events-none" />
-          <Heart className="w-6 h-6 mx-auto mb-6 text-brand-plum fill-brand-lavender/20" />
-          <p className="font-names text-4xl sm:text-5xl text-stone-800 mb-2">Bagya & Avishka</p>
+          <Heart className="w-6 h-6 mx-auto mb-6 text-brand-ink fill-brand-lavender/20" />
+          <p className="font-names text-4xl sm:text-5xl text-stone-800 mb-2">Adeesha & Thilina</p>
           <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em] font-sans text-stone-400 font-semibold block mb-4">
-            October 22, 2026
+            December 10, 2026
           </span>
           
           <div className="w-12 h-[1px] bg-brand-lavender/30 mx-auto my-6" />
@@ -129,7 +139,7 @@ export function InvitationContent({
             <a 
               target="_blank" 
               rel="noreferrer" 
-              className="text-[#D4AF37] hover:text-brand-plum font-bold underline decoration-[#D4AF37]/40 hover:decoration-brand-plum/40 underline-offset-4 transition-colors" 
+              className="text-[#b58466] hover:text-brand-ink font-bold underline decoration-[#b58466]/40 hover:decoration-brand-plum/40 underline-offset-4 transition-colors" 
               href="https://wa.me/94707819074"
             >
               Invitemint

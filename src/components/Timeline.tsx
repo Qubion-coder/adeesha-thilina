@@ -3,15 +3,15 @@ import { motion } from 'motion/react';
 import { Heart } from 'lucide-react';
 
 const events = [
-  { time: '09:00 AM', title: 'Guest Arrival', desc: 'Welcome and seating' },
-  { time: '09:15 AM', title: 'Poruwa', desc: 'Traditional ceremony' },
+  { time: '10:00 AM', title: 'Guest Arrival', desc: 'Welcome and seating' },
+  { time: '10:25 AM', title: 'Poruwa', desc: 'Traditional ceremony' },
   { time: '12:00 PM', title: 'Lunch', desc: 'Wedding feast' },
   { time: '03:30 PM', title: 'Grand Exit', desc: 'Send off the newlyweds' },
 ];
 
 export const Timeline = () => {
   return (
-    <section className="py-20 md:py-32 px-6 bg-[#FDFBF7] relative overflow-hidden">
+    <section className="py-20 md:py-32 px-6 bg-[#e4c1ae] relative overflow-hidden">
       {/* Background decoration removed per user request */}
 
       <div className="max-w-3xl mx-auto relative z-10">
@@ -61,17 +61,17 @@ export const Timeline = () => {
             </g>
           </svg>
 
-          <h2 className="relative z-10 font-['Cormorant_Garamond',_serif] text-5xl md:text-7xl text-[#ea6a29] leading-tight">
+          <h2 className="relative z-10 font-['Cormorant_Garamond',_serif] text-5xl md:text-7xl text-brand-ink leading-tight">
             The Day
           </h2>
-          <p className="relative z-10 text-[#ea6a29]/70 text-[13px] md:text-[15px] mt-4 font-sans leading-relaxed">
+          <p className="relative z-10 text-brand-ink/70 text-[13px] md:text-[15px] mt-4 font-sans leading-relaxed">
             A day to celebrate,<br />from the first hello to the last dance.
           </p>
         </motion.div>
 
         <div className="relative max-w-lg mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-[#ea6a29]/30"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-[#b58466]/30"></div>
           
           <div className="space-y-12 md:space-y-14">
             {events.map((event, idx) => (
@@ -85,23 +85,23 @@ export const Timeline = () => {
               >
                 {/* Time */}
                 <div className="flex min-w-0 items-center justify-end">
-                  <span className="shrink-0 font-['Cormorant_Garamond',_serif] text-2xl md:text-3xl text-[#ea6a29] leading-none">
+                  <span className="shrink-0 font-['Cormorant_Garamond',_serif] text-2xl md:text-3xl text-brand-ink leading-none">
                     {event.time}
                   </span>
                 </div>
                 
                 {/* Heart Icon */}
                 <Heart 
-                  className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0 self-center text-[#ea6a29] fill-current" 
+                  className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0 self-center text-brand-ink fill-current" 
                   strokeWidth={0} 
                 />
                 
                 {/* Content */}
                 <span className="leading-snug pt-1">
-                  <span className="block font-sans text-sm tracking-[0.2em] uppercase text-[#ea6a29] font-medium">
+                  <span className="block font-sans text-sm tracking-[0.2em] uppercase text-brand-ink font-medium">
                     {event.title}
                   </span>
-                  <span className="block mt-1.5 font-sans text-[#ea6a29]/70 text-[12px] md:text-[13px] leading-relaxed">
+                  <span className="block mt-1.5 font-sans text-brand-ink/70 text-[12px] md:text-[13px] leading-relaxed">
                     {event.desc}
                   </span>
                 </span>

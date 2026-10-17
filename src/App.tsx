@@ -20,7 +20,7 @@ export default function App() {
 
   let eventLabel = 'Our Wedding Celebration';
 
-  const weddingDate = new Date('2026-10-22T09:15:00');
+  const weddingDate = new Date('2026-12-10T10:25:00');
 
   useEffect(() => {
     if (isAdminRoute()) return;
@@ -37,13 +37,43 @@ export default function App() {
 
   const ensureAudio = useCallback(() => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('/Dreams Come True - Dylan Carwyn Romantic Wedding Song 2025 (Lyrics) - Dazzling Tunes (128k).mp3');
+      audioRef.current = new Audio('/Ordinary (Alex Warren) Violin Cover by Violin Valenti.mp3');
       audioRef.current.loop = true;
       audioRef.current.volume = 0.3;
-      audioRef.current.preload = 'none';
+      audioRef.current.preload = 'auto';
     }
     return audioRef.current;
   }, []);
+
+  // Autoplay: try immediately; if the browser blocks it, start on the first interaction
+  useEffect(() => {
+    if (isAdminRoute()) return;
+
+    const audio = ensureAudio();
+    const events = ['pointerdown', 'touchstart', 'keydown', 'click'] as const;
+
+    const removeListeners = () => {
+      events.forEach((evt) => window.removeEventListener(evt, startOnInteraction));
+    };
+
+    const tryPlay = () =>
+      audio.play().then(() => {
+        setIsMusicPlaying(true);
+        removeListeners();
+      });
+
+    function startOnInteraction(e: Event) {
+      // Let the music button handle its own taps
+      if ((e.target as Element | null)?.closest?.('[data-music-toggle]')) return;
+      tryPlay().catch(() => {});
+    }
+
+    tryPlay().catch(() => {
+      events.forEach((evt) => window.addEventListener(evt, startOnInteraction, { passive: true }));
+    });
+
+    return removeListeners;
+  }, [ensureAudio]);
 
   useEffect(() => {
     return () => {
@@ -56,13 +86,13 @@ export default function App() {
 
   const toggleMusic = useCallback(() => {
     const audio = ensureAudio();
-    if (isMusicPlaying) {
+    if (!audio.paused) {
       audio.pause();
+      setIsMusicPlaying(false);
     } else {
-      audio.play().catch(console.error);
+      audio.play().then(() => setIsMusicPlaying(true)).catch(console.error);
     }
-    setIsMusicPlaying((playing) => !playing);
-  }, [ensureAudio, isMusicPlaying]);
+  }, [ensureAudio]);
 
   if (isAdminRoute()) {
     return (

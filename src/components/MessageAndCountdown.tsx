@@ -26,7 +26,7 @@ export const MessageAndCountdown: React.FC<Props> = ({ targetDate }) => {
   return (
     <div className="relative w-full flex flex-col">
       {/* Top Message Section */}
-      <div className="w-full bg-[#FDFBF7] pt-16 pb-56 sm:pt-24 sm:pb-48 flex flex-col items-center justify-center px-4 relative z-10 overflow-hidden">
+      <div className="w-full bg-[#e4c1ae] pt-16 pb-56 sm:pt-24 sm:pb-48 flex flex-col items-center justify-center px-4 relative z-10 overflow-hidden">
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,23 +35,23 @@ export const MessageAndCountdown: React.FC<Props> = ({ targetDate }) => {
           transition={{ duration: 0.8 }}
           className="max-w-2xl mx-auto text-center flex flex-col items-center"
         >
-          <h2 className="text-2xl sm:text-3xl text-[#8B4513] font-serif mb-2">Together with their</h2>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl text-[#8B4513] font-['Pinyon_Script',_cursive] mb-6">Families</h2>
+          <h2 className="text-2xl sm:text-3xl text-brand-ink font-serif mb-2">Together with their</h2>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl text-brand-ink font-['Pinyon_Script',_cursive] mb-6">Families</h2>
           
           <div className="flex items-center justify-center gap-2 mb-8 w-full max-w-xs mx-auto">
-             <div className="h-[1px] flex-1 bg-[#8B4513]/30"></div>
-             <div className="w-2 h-2 rounded-full bg-[#8B4513]/30"></div>
-             <div className="h-[1px] flex-1 bg-[#8B4513]/30"></div>
+             <div className="h-[1px] flex-1 bg-[#b58466]/30"></div>
+             <div className="w-2 h-2 rounded-full bg-[#b58466]/30"></div>
+             <div className="h-[1px] flex-1 bg-[#b58466]/30"></div>
           </div>
 
-          <p className="text-[#8B4513] font-serif text-lg sm:text-xl leading-relaxed max-w-lg mx-auto px-4 font-medium">
-            Bagya & Avishka request the pleasure of your company as they celebrate their marriage and begin this new chapter surrounded by the people they love most.
+          <p className="text-brand-ink font-serif text-lg sm:text-xl leading-relaxed max-w-lg mx-auto px-4 font-medium">
+            Adeesha & Thilina request the pleasure of your company as they celebrate their marriage and begin this new chapter surrounded by the people they love most.
           </p>
         </motion.div>
       </div>
 
       {/* Countdown Section */}
-      <section id="countdown" className="relative -mt-14 py-24 md:py-32 px-1 z-30 bg-[#A8320B]">
+      <section id="countdown" className="relative -mt-14 py-24 md:py-32 px-1 z-30 bg-[#ba8281]">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

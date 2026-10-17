@@ -93,12 +93,12 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
           >
             
             {/* Staggered Text Animations */}
-            <div className="flex flex-col items-center text-[#A8320B] drop-shadow-[0_2px_15px_rgba(255,255,255,0.6)] -mt-10">
+            <div className="flex flex-col items-center text-brand-ink drop-shadow-[0_2px_15px_rgba(255,255,255,0.6)] -mt-10">
               <motion.span 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="uppercase tracking-[0.3em] text-xs sm:text-sm font-sans mb-8 text-[#A8320B]"
+                className="uppercase tracking-[0.3em] text-xs sm:text-sm font-sans mb-8 text-brand-ink"
               >
                 Wedding Invitation
               </motion.span>
@@ -107,16 +107,16 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
                 initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
                 animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
-                className="font-['Pinyon_Script',_cursive] text-6xl sm:text-8xl md:text-[10rem] leading-none text-[#A8320B]"
+                className="font-['Pinyon_Script',_cursive] text-6xl sm:text-8xl md:text-[10rem] leading-none text-brand-ink"
               >
-                Bagya
+                Adeesha
               </motion.h1>
               
               <motion.span 
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
-                className="font-serif italic text-3xl sm:text-4xl md:text-5xl my-4 text-[#A8320B]/90"
+                className="font-serif italic text-3xl sm:text-4xl md:text-5xl my-4 text-brand-ink/90"
               >
                 &
               </motion.span>
@@ -125,9 +125,9 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
                 initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
                 animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 2.2, ease: "easeOut" }}
-                className="font-['Pinyon_Script',_cursive] text-6xl sm:text-8xl md:text-[10rem] leading-none text-[#A8320B]"
+                className="font-['Pinyon_Script',_cursive] text-6xl sm:text-8xl md:text-[10rem] leading-none text-brand-ink"
               >
-                Avishka
+                Thilina
               </motion.h1>
             </div>
           </motion.div>
@@ -143,7 +143,7 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
             transition={{ delay: 0.5, duration: 0.8 }}
             onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
           >
-            <div className="flex flex-col items-center gap-2 bg-black/20 hover:bg-black/40 transition-colors backdrop-blur-md px-6 py-4 rounded-full border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+            <div className="flex flex-col items-center gap-2 bg-black/20 hover:bg-black/40 transition-colors backdrop-blur-md px-6 py-4 rounded-full border border-[#e4c1ae]/20 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
               <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-white font-medium pl-1">
                 Scroll Down
               </span>

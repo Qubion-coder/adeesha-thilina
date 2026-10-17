@@ -2,11 +2,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* White/Green/Orange Color Palette */
-  --color-brand-plum: #b89645;
-  --color-brand-lavender: #C1D5C0;
-  --color-brand-rose: #FDE6D5;
-  --color-brand-blush: #ffffff;
+  /* Dusty rose / nude palette */
+  --color-brand-plum: #ba8281;
+  --color-brand-lavender: #b58466;
+  --color-brand-rose: #e4c1ae;
+  --color-brand-blush: #dbbdb2;
+  --color-brand-ink: #6e4636; /* deep tone of #b58466, for readable text */
 
   --font-serif: "Cormorant Garamond", serif;
   --font-display: "Great Vibes", cursive;
@@ -37,7 +38,7 @@ img {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(228, 193, 174, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -62,4 +63,37 @@ img {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brand-plum);
+}
+/* Falling 3D rose petals */
+@keyframes petal-fall {
+  from { transform: translate3d(0, -10vh, 0); }
+  to   { transform: translate3d(0, 110vh, 0); }
+}
+
+@keyframes petal-sway {
+  from { transform: translateX(calc(var(--sway) * -1)) rotateZ(-12deg); }
+  to   { transform: translateX(var(--sway)) rotateZ(12deg); }
+}
+
+@keyframes petal-tumble {
+  from { transform: rotate3d(var(--axis), 0deg); }
+  to   { transform: rotate3d(var(--axis), 360deg); }
+}
+
+.petal-fall {
+  animation: petal-fall linear infinite;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.petal-sway {
+  animation: petal-sway ease-in-out infinite alternate;
+  transform-style: preserve-3d;
+}
+
+.petal-tumble {
+  animation: petal-tumble linear infinite;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  filter: drop-shadow(0 3px 3px rgba(110, 70, 54, 0.25));
 }
