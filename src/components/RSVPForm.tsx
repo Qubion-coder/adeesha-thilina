@@ -56,51 +56,15 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ inviteeName = '', eventName 
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 relative py-12 sm:py-20 flex flex-col items-center">
+    <div className="max-w-4xl mx-auto px-6 relative py-0 sm:py-20 flex flex-col items-center">
       
-      {/* Pearl Garland SVG - Creative Touch */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150vw] sm:w-[120vw] max-w-none pointer-events-none select-none z-0 opacity-60">
-        <svg viewBox="0 0 1774 887" aria-hidden="true" focusable="false" className="w-full h-auto">
-          <image href="/pearl-garland-2-base.png" xlinkHref="/pearl-garland-2-base.png" x="0" y="0" width="1774" height="887" />
-          <g transform="translate(127 239)">
-            <g>
-              <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.6s" begin="-0.4s" repeatCount="indefinite"></animateTransform>
-              <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-114" y="0" width="228" height="630" />
-            </g>
-          </g>
-          <g transform="translate(543 239)">
-            <g>
-              <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.2s" begin="-2.1s" repeatCount="indefinite"></animateTransform>
-              <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-103" y="0" width="206" height="473" />
-            </g>
-          </g>
-          <g transform="translate(887 239)">
-            <g>
-              <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="5s" begin="-3.6s" repeatCount="indefinite"></animateTransform>
-              <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-93" y="0" width="186" height="318" />
-            </g>
-          </g>
-          <g transform="translate(1231 239)">
-            <g>
-              <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.4s" begin="-1.3s" repeatCount="indefinite"></animateTransform>
-              <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-103" y="0" width="206" height="472" />
-            </g>
-          </g>
-          <g transform="translate(1647.5 239)">
-            <g>
-              <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.8s" begin="-2.9s" repeatCount="indefinite"></animateTransform>
-              <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-113.5" y="0" width="227" height="630" />
-            </g>
-          </g>
-        </svg>
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-lg bg-[#e4c1ae]/95 backdrop-blur-xl p-10 sm:p-14 rounded-t-[10rem] border-x-[1.5px] border-t-[1.5px] border-[#b58466]/30 shadow-2xl text-center mt-20"
+        className="relative z-10 w-full max-w-lg bg-[#fffdf9]/95 backdrop-blur-xl p-10 sm:p-14 rounded-t-[10rem] border-x-[1.5px] border-t-[1.5px] border-[#b58466]/30 shadow-2xl text-center mt-4 sm:mt-20"
       >
         {/* Lace decoration inside */}
         <div className="absolute inset-0 border border-[#b58466]/15 rounded-t-[10rem] m-2 pointer-events-none" />

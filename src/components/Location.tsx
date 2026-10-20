@@ -11,8 +11,6 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
       id: 'ceremony',
       name: "Raffles",
       city: "Nugegoda",
-      quote: "Join us at Raffles, Nugegoda, where our beautiful celebration will take place on the 10th of December 2026.",
-      description: "Guests are kindly requested to arrive by 10.00 AM. The auspicious Poruwa Ceremony begins at 10.25 AM.",
       liveLocationUrl: "https://share.google/Njhd8xVJRSZuXxl4t",
       imageUrl: "/Screenshot 2026-10-18 035242.png",
       label: "Location"
@@ -22,7 +20,7 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
   return (
     <>
       {venues.map((venue) => (
-        <section key={venue.id} className="pt-32 md:pt-44 pb-20 md:pb-28 px-6">
+        <section key={venue.id} className="py-12 md:pt-20 md:pb-28 px-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -40,25 +38,19 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
               {venue.city}
             </p>
             
-            <p className="text-brand-ink/80 text-[12px] md:text-[13px] font-sans leading-relaxed mt-8">
-              {venue.quote}
-            </p>
-            <p className="text-brand-ink/80 text-[12px] md:text-[13px] font-sans leading-relaxed mt-4">
-              {venue.description}
-            </p>
             
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: 'easeOut' }}
-              className="relative mx-auto mt-14 w-[92%] max-w-[440px]"
+              className="relative mx-auto mt-10 sm:mt-14 w-[92%] max-w-[440px]"
             >
               {/* Offset outline */}
               <div className="absolute -inset-3 sm:-inset-4 rounded-t-[50%_32%] rounded-b-2xl border border-[#b58466]/45 pointer-events-none" />
 
               {/* Framed photo */}
-              <div className="relative rounded-t-[50%_32%] rounded-b-xl bg-[#e4c1ae] p-1.5 shadow-[0_25px_50px_-12px_rgba(110,70,54,0.45)]">
+              <div className="relative rounded-t-[50%_32%] rounded-b-xl bg-[#fffdf9] p-1.5 shadow-[0_25px_50px_-12px_rgba(110,70,54,0.45)]">
                 <div className="relative overflow-hidden rounded-t-[50%_32%] rounded-b-lg aspect-[3/2]">
                   <img
                     loading="lazy"

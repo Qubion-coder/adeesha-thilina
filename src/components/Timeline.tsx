@@ -1,79 +1,44 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { GOLD, GOLD_TEXT } from '../utils/gold';
 import { Heart } from 'lucide-react';
+
+const BROWN = '#4a2c1d';
 
 const events = [
   { time: '10:00 AM', title: 'Guest Arrival', desc: 'Welcome and seating' },
   { time: '10:25 AM', title: 'Poruwa', desc: 'Traditional ceremony' },
   { time: '12:00 PM', title: 'Lunch', desc: 'Wedding feast' },
-  { time: '03:30 PM', title: 'Grand Exit', desc: 'Send off the newlyweds' },
+  { time: '04:00 PM', title: 'Grand Exit', desc: 'Send off the newlyweds' },
 ];
 
 export const Timeline = () => {
   return (
-    <section className="py-20 md:py-32 px-6 bg-[#e4c1ae] relative overflow-hidden">
-      {/* Background decoration removed per user request */}
-
-      <div className="max-w-3xl mx-auto relative z-10">
+    <section className="py-12 md:py-32 px-6 bg-brand-blush relative overflow-hidden">
+      <div className="max-w-3xl mx-auto relative z-10" style={{ color: BROWN }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 relative"
+          className="text-center mb-10 md:mb-16 relative"
         >
-          <svg 
-            viewBox="0 0 1774 887" 
-            className="pointer-events-none select-none relative left-1/2 -translate-x-1/2 w-[116vw] max-w-none h-auto -mt-28 md:-mt-40 -mb-4 md:-mb-6 z-0" 
-            aria-hidden="true" 
-            focusable="false"
-          >
-            <image href="/pearl-garland-2-base.png" xlinkHref="/pearl-garland-2-base.png" x="0" y="0" width="1774" height="887" />
-            <g transform="translate(127 239)">
-              <g>
-                <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.6s" begin="-0.4s" repeatCount="indefinite"></animateTransform>
-                <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-114" y="0" width="228" height="630" />
-              </g>
-            </g>
-            <g transform="translate(543 239)">
-              <g>
-                <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.2s" begin="-2.1s" repeatCount="indefinite"></animateTransform>
-                <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-103" y="0" width="206" height="473" />
-              </g>
-            </g>
-            <g transform="translate(887 239)">
-              <g>
-                <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="5s" begin="-3.6s" repeatCount="indefinite"></animateTransform>
-                <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-93" y="0" width="186" height="318" />
-              </g>
-            </g>
-            <g transform="translate(1231 239)">
-              <g>
-                <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.4s" begin="-1.3s" repeatCount="indefinite"></animateTransform>
-                <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-103" y="0" width="206" height="472" />
-              </g>
-            </g>
-            <g transform="translate(1647.5 239)">
-              <g>
-                <animateTransform attributeName="transform" type="skewX" values="0;2.6;0;-2.6;0" keyTimes="0;0.25;0.5;0.75;1" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1" dur="4.8s" begin="-2.9s" repeatCount="indefinite"></animateTransform>
-                <image href="/pearl-garland-2-strand-0.png" xlinkHref="/pearl-garland-2-strand-0.png" x="-113.5" y="0" width="227" height="630" />
-              </g>
-            </g>
-          </svg>
-
-          <h2 className="relative z-10 font-['Cormorant_Garamond',_serif] text-5xl md:text-7xl text-brand-ink leading-tight">
+          <span className="block font-['Cormorant_Garamond',_serif] uppercase tracking-[0.4em] text-xs sm:text-sm font-semibold mb-4">
+            Agenda
+          </span>
+          <h2 className="relative z-10 font-['Pinyon_Script',_cursive] text-6xl md:text-7xl leading-none pb-2" style={GOLD_TEXT}>
             The Day
           </h2>
-          <p className="relative z-10 text-brand-ink/70 text-[13px] md:text-[15px] mt-4 font-sans leading-relaxed">
+          <p className="relative z-10 mt-5 font-['Cormorant_Garamond',_serif] italic text-xl md:text-2xl leading-relaxed">
             A day to celebrate,<br />from the first hello to the last dance.
           </p>
         </motion.div>
 
         <div className="relative max-w-lg mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-[#b58466]/30"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 top-3 bottom-3 w-px bg-[#8f6420]/40"></div>
           
-          <div className="space-y-12 md:space-y-14">
+          <div className="space-y-9 md:space-y-14">
             {events.map((event, idx) => (
               <motion.div 
                 key={idx}
@@ -85,23 +50,23 @@ export const Timeline = () => {
               >
                 {/* Time */}
                 <div className="flex min-w-0 items-center justify-end">
-                  <span className="shrink-0 font-['Cormorant_Garamond',_serif] text-2xl md:text-3xl text-brand-ink leading-none">
+                  <span className="shrink-0 font-['Cormorant_Garamond',_serif] text-2xl md:text-3xl leading-none font-medium">
                     {event.time}
                   </span>
                 </div>
                 
                 {/* Heart Icon */}
                 <Heart 
-                  className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0 self-center text-brand-ink fill-current" 
+                  className="w-3 h-3 md:w-3.5 md:h-3.5 shrink-0 self-center text-[#8f6420] fill-current" 
                   strokeWidth={0} 
                 />
                 
                 {/* Content */}
                 <span className="leading-snug pt-1">
-                  <span className="block font-sans text-sm tracking-[0.2em] uppercase text-brand-ink font-medium">
+                  <span className="block font-sans text-sm tracking-[0.2em] uppercase font-semibold">
                     {event.title}
                   </span>
-                  <span className="block mt-1.5 font-sans text-brand-ink/70 text-[12px] md:text-[13px] leading-relaxed">
+                  <span className="block mt-1.5 font-sans opacity-75 text-[12px] md:text-[13px] leading-relaxed">
                     {event.desc}
                   </span>
                 </span>

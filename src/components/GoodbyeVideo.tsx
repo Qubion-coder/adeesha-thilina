@@ -27,13 +27,13 @@ export const GoodbyeVideo = () => {
   }, []);
 
   return (
-    <section className="relative py-20 sm:py-28 px-6 bg-gradient-to-b from-brand-blush via-[#e4c1ae] to-brand-blush overflow-hidden">
+    <section className="relative py-12 sm:py-28 px-6 bg-brand-blush overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12"
+        className="text-center mb-9 sm:mb-12"
       >
         <div className="inline-flex items-center gap-4 mb-5">
           <div className="w-10 sm:w-16 h-px bg-gradient-to-r from-transparent to-[#b58466]/60" />
@@ -58,7 +58,7 @@ export const GoodbyeVideo = () => {
         <div className="absolute -inset-3 sm:-inset-4 rounded-t-full rounded-b-3xl border border-[#b58466]/45 pointer-events-none" />
 
         {/* Framed video */}
-        <div className="relative rounded-t-full rounded-b-2xl bg-[#e4c1ae] p-1.5 shadow-[0_25px_50px_-12px_rgba(110,70,54,0.45)]">
+        <div className="relative rounded-t-full rounded-b-2xl bg-[#fffdf9] p-1.5 shadow-[0_25px_50px_-12px_rgba(110,70,54,0.45)]">
           <div className="relative overflow-hidden rounded-t-full rounded-b-xl aspect-[9/16] bg-[#ba8281]/30">
             <video
               ref={videoRef}
@@ -78,7 +78,7 @@ export const GoodbyeVideo = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="text-center mt-12 font-serif italic text-lg sm:text-xl text-brand-ink/80"
+        className="text-center mt-9 sm:mt-12 font-serif italic text-lg sm:text-xl text-brand-ink/80"
       >
         With love, Adeesha &amp; Thilina
       </motion.p>

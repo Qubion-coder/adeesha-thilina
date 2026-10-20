@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 export const ThankYouSection = () => {
   return (
-    <section className="relative pt-6 md:pt-10 pb-10 md:pb-16 px-4 overflow-hidden z-20 bg-brand-blush">
+    <section className="relative pt-4 md:pt-10 pb-10 md:pb-16 px-4 overflow-hidden z-20 bg-brand-blush">
       {/* Outer elegant container - Full Pill Shape */}
       <div className="relative w-full max-w-[600px] mx-auto bg-[#b58466] rounded-[10rem] sm:rounded-[15rem] overflow-hidden shadow-[0_30px_60px_rgba(181,132,102,0.25)] pb-6 border-[8px] border-[#b58466]/50 bg-clip-padding">
         

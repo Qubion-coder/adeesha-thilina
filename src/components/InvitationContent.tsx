@@ -1,15 +1,15 @@
 import { motion } from 'motion/react';
 import { Music, VolumeX, Heart } from 'lucide-react';
 import { Hero } from './Hero';
-import { CoupleDetails } from './CoupleDetails';
-import { CeremonyDetails } from './CeremonyDetails';
 import { Location } from './Location';
 import { Timeline } from './Timeline';
-import { MessageAndCountdown } from './MessageAndCountdown';
+import { FamiliesMessage, WeddingCountdown } from './MessageAndCountdown';
 import { RSVPForm } from './RSVPForm';
 import { ThankYouSection } from './ThankYouSection';
 import { GoodbyeVideo } from './GoodbyeVideo';
 import { FloatingPetals } from './FloatingPetals';
+import { LoveQuote } from './LoveQuote';
+import { OurBeginning } from './OurBeginning';
 
 import { InviteeBanner } from './InviteeBanner';
 import { DeferredMount } from './DeferredMount';
@@ -49,7 +49,7 @@ export function InvitationContent({
         onClick={onToggleMusic}
         data-music-toggle
         aria-label={isMusicPlaying ? 'Pause music' : 'Play music'}
-        className="fixed top-6 right-6 z-50 w-12 sm:w-14 h-12 sm:h-14 bg-[#e4c1ae]/70 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(176,137,104,0.15)] flex items-center justify-center border border-brand-lavender/50 text-brand-ink hover:scale-105 transition-all duration-300"
+        className="fixed top-6 right-6 z-50 w-12 sm:w-14 h-12 sm:h-14 bg-[#faf6f1]/85 backdrop-blur-md rounded-full shadow-[0_8px_30px_rgba(176,137,104,0.15)] flex items-center justify-center border border-brand-lavender/50 text-brand-ink hover:scale-105 transition-all duration-300"
       >
         {isMusicPlaying ? (
           <Music className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -62,6 +62,8 @@ export function InvitationContent({
 
       <Hero event={eventParam} inviteeName={fullInviteeName} />
 
+      <LoveQuote />
+
       {fullInviteeName && (
         <DeferredMount active={active} delay={80}>
           <InviteeBanner inviteeName={fullInviteeName} eventLabel={eventLabel} />
@@ -69,48 +71,30 @@ export function InvitationContent({
       )}
 
       <DeferredMount active={active} delay={100} minHeight="40vh">
-        <MessageAndCountdown targetDate={weddingDate} />
+        <FamiliesMessage />
       </DeferredMount>
 
-      <div>
-        <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-blush via-[#e4c1ae] to-brand-blush relative overflow-hidden">
-          <img
-            src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png"
-            alt=""
-            loading="eager"
-            decoding="async"
-            className="absolute top-1/2 -left-[45%] sm:left-0 z-0 h-[130%] sm:h-[145%] w-auto max-w-none -translate-y-1/2 opacity-55 pointer-events-none select-none mix-blend-multiply"
-          />
-          <img
-            src="/ChatGPT Image Oct 9, 2026, 03_22_01 AM.png"
-            alt=""
-            loading="eager"
-            decoding="async"
-            className="absolute top-1/2 -right-[45%] sm:right-0 z-0 h-[130%] sm:h-[145%] w-auto max-w-none -translate-y-1/2 opacity-55 pointer-events-none select-none mix-blend-multiply transform scale-y-[-1]"
-          />
+      <DeferredMount active={active} delay={140} minHeight="30vh">
+        <OurBeginning />
+      </DeferredMount>
 
-          <CoupleDetails />
-        </div>
-      </div>
+      <DeferredMount active={active} delay={150} minHeight="40vh">
+        <WeddingCountdown targetDate={weddingDate} />
+      </DeferredMount>
 
-      <DeferredMount active={active} delay={180} minHeight="40vh">
-        <CeremonyDetails event={eventParam} />
+      <DeferredMount active={active} delay={160} minHeight="40vh">
+        <Timeline />
       </DeferredMount>
 
       <DeferredMount active={active} delay={240} minHeight="40vh">
-        <div className="pt-24 pb-12 sm:py-32 bg-gradient-to-b from-[#e4c1ae] via-brand-rose/30 to-brand-blush relative overflow-hidden">
+        <div className="sm:py-32 bg-brand-blush relative overflow-hidden">
           <Location event={eventParam} />
         </div>
       </DeferredMount>
 
-      <DeferredMount active={active} delay={300} minHeight="40vh">
-        <Timeline />
-      </DeferredMount>
-
-
 
       <DeferredMount active={active} delay={420} minHeight="30vh">
-        <div className="py-24 sm:py-32 bg-brand-blush relative overflow-hidden">
+        <div className="py-12 sm:py-32 bg-brand-blush relative overflow-hidden">
           <RSVPForm inviteeName={fullInviteeName} eventName={eventLabel} eventParam={eventParam} />
         </div>
       </DeferredMount>
@@ -124,7 +108,7 @@ export function InvitationContent({
       </DeferredMount>
 
       <DeferredMount active={active} delay={520}>
-        <footer className="py-12 bg-[#e4c1ae] border-t border-brand-lavender/20 text-center relative overflow-hidden mt-10">
+        <footer className="py-12 bg-brand-blush border-t border-brand-lavender/20 text-center relative overflow-hidden mt-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-lavender/10 blur-[80px] rounded-full pointer-events-none" />
           <Heart className="w-6 h-6 mx-auto mb-6 text-brand-ink fill-brand-lavender/20" />
           <p className="font-names text-4xl sm:text-5xl text-stone-800 mb-2">Adeesha & Thilina</p>

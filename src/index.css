@@ -5,8 +5,8 @@
   /* Dusty rose / nude palette */
   --color-brand-plum: #ba8281;
   --color-brand-lavender: #b58466;
-  --color-brand-rose: #e4c1ae;
-  --color-brand-blush: #dbbdb2;
+  --color-brand-rose: #f3ebe2;
+  --color-brand-blush: #faf6f1;
   --color-brand-ink: #6e4636; /* deep tone of #b58466, for readable text */
 
   --font-serif: "Cormorant Garamond", serif;
@@ -38,7 +38,7 @@ img {
 }
 
 .glass {
-  background: rgba(228, 193, 174, 0.4);
+  background: rgba(250, 246, 241, 0.6);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
