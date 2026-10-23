@@ -116,7 +116,7 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {(started || videoEnded) && (
+        {videoEnded && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
