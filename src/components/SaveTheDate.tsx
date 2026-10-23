@@ -64,14 +64,14 @@ export const SaveTheDate = () => {
       {/* Save the Date */}
       <div className="self-start pl-[6%] leading-none">
         <p className="font-['Pinyon_Script',_cursive] text-[clamp(2.75rem,7vh,4.25rem)] leading-[0.9]">
-          <Written delay={0.2}>Save</Written>
+          <Written delay={0.15}>Save</Written>
         </p>
         <p className="font-['Cormorant_Garamond',_serif] italic text-[clamp(1.25rem,3vh,1.875rem)] pl-[3.5em] -mt-1">
-          <Letters text="the" delay={1.1} stagger={0.08} />
+          <Letters text="the" delay={0.8} stagger={0.07} />
         </p>
         <p className="font-['Pinyon_Script',_cursive] text-[clamp(2.75rem,7vh,4.25rem)] leading-[0.9] pl-[1.6em] flex items-center gap-2">
-          <Written delay={1.4}>Date</Written>
-          <Pop delay={2.6}>
+          <Written delay={1.0}>Date</Written>
+          <Pop delay={1.9}>
             <Heart className="w-4 h-4 sm:w-5 sm:h-5 mt-3" strokeWidth={1.5} />
           </Pop>
         </p>
@@ -81,14 +81,14 @@ export const SaveTheDate = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.92, filter: 'blur(8px)' }}
         animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        transition={{ duration: 1.3, delay: 2.4, ease: EASE }}
+        transition={{ duration: 1.1, delay: 1.7, ease: EASE }}
         className="relative mt-[2.5vh] w-[min(56vw,29vh,15rem)]"
       >
         <motion.div
           className="absolute -inset-2 border border-[#1c1917]/40"
           initial={{ opacity: 0, scale: 1.08 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 2.9, ease: EASE }}
+          transition={{ duration: 1.0, delay: 2.1, ease: EASE }}
         />
         <div className="relative bg-[#e4c1ae] p-1 shadow-[0_15px_30px_-10px_rgba(28,25,23,0.35)]">
           <img
@@ -102,17 +102,17 @@ export const SaveTheDate = () => {
 
       {/* Names & date */}
       <p className="mt-[3vh] font-['Pinyon_Script',_cursive] text-[clamp(2rem,4.8vh,2.75rem)] leading-none text-center">
-        <Written delay={3.4} duration={1.8}>
+        <Written delay={2.5} duration={1.5}>
           Adeesha <span className="font-['Cormorant_Garamond',_serif] italic text-[0.6em] align-middle">&amp;</span> Thilina
         </Written>
       </p>
       <span className="my-[1.4vh]">
-        <Pop delay={5.0}>
+        <Pop delay={3.7}>
           <Heart className="w-3.5 h-3.5 fill-current" />
         </Pop>
       </span>
       <p className="font-['Cinzel',_serif] text-sm sm:text-base tracking-[0.35em] pl-[0.35em]">
-        <Letters text="10 . 12 . 2026" delay={5.3} stagger={0.06} />
+        <Letters text="10 . 12 . 2026" delay={3.9} stagger={0.05} />
       </p>
     </div>
   );
