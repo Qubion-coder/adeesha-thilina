@@ -52,7 +52,10 @@ export const FamiliesMessage: React.FC = () => {
             <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: GOLD }} />
             <p className="text-2xl sm:text-3xl font-medium tracking-wide">10.00 AM</p>
             <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: GOLD }} />
-            <p className="text-xl sm:text-2xl uppercase tracking-[0.2em] font-semibold">Raffles, Nugegoda</p>
+            <div className="flex flex-col items-center gap-1">
+              <p className="text-xl sm:text-2xl uppercase tracking-[0.2em] font-semibold">Grand Ballroom</p>
+              <p className="text-lg sm:text-xl uppercase tracking-[0.2em]">Raffles, Nugegoda</p>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -44,45 +44,76 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both', inviteeName }) => {
   const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  const [hasStartedPlay, setHasStartedPlay] = useState(false);
+  const [started, setStarted] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
+  const fallbackRef = useRef<number>();
 
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused || videoEnded) {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play();
-        setHasStartedPlay(true);
-        setVideoEnded(false);
-      } else {
-        videoRef.current.pause();
-        setHasStartedPlay(false);
-      }
-    }
+  const showText = () => setVideoEnded(true);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    video?.addEventListener('error', showText);
+    return () => {
+      video?.removeEventListener('error', showText);
+      window.clearTimeout(fallbackRef.current);
+    };
+  }, []);
+
+  // First tap opens the invitation: play the intro once, then the Save the Date text stays.
+  const open = () => {
+    const video = videoRef.current;
+    if (!video || started) return;
+    setStarted(true);
+    video.play().catch(showText);
+    // Safety net if the video stalls or never fires "ended"
+    fallbackRef.current = window.setTimeout(showText, 9000);
   };
 
   return (
-    <div ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-blush/30 group">
+    <div ref={containerRef} className="relative h-screen h-[100svh] flex items-center justify-center overflow-hidden bg-brand-blush/30 group">
       <motion.div
         className="absolute inset-0 z-0 origin-center cursor-pointer"
         style={useParallax ? { y: y1, scale } : undefined}
-        onClick={togglePlay}
+        onClick={open}
       >
         <video
           ref={videoRef}
-          src="/intro.mp4"
+          src="/intro.mp4#t=0.001"
           className="w-full h-full object-cover"
           style={{ objectPosition: 'center 20%' }}
           muted
           playsInline
+          preload="auto"
           onEnded={(e) => {
-             // Pauses exactly at the last frame
-             e.currentTarget.pause();
-             setVideoEnded(true);
-             setHasStartedPlay(false);
+            // Hold on the last frame
+            e.currentTarget.pause();
+            window.clearTimeout(fallbackRef.current);
+            setVideoEnded(true);
           }}
         />
       </motion.div>
+
+      <AnimatePresence>
+        {!started && (
+          <motion.button
+            type="button"
+            onClick={open}
+            className="absolute bottom-[17%] sm:bottom-14 left-1/2 -translate-x-1/2 z-30"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.span
+              className="block bg-black/25 backdrop-blur-md px-8 py-4 rounded-full border border-white/25 shadow-[0_8px_32px_rgba(0,0,0,0.3)] text-[11px] font-sans uppercase tracking-[0.4em] text-white font-medium pl-[calc(2rem+0.4em)]"
+              animate={{ scale: [1, 1.05, 1], opacity: [0.85, 1, 0.85] }}
+              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+            >
+              Tap to open
+            </motion.span>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {videoEnded && (

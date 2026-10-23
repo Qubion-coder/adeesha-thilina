@@ -15,6 +15,13 @@ const events = [
 export const Timeline = () => {
   return (
     <section className="py-12 md:py-32 px-6 bg-brand-blush relative overflow-hidden">
+      <img
+        src="/families-bg.jpg"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover -scale-x-100 opacity-60 pointer-events-none select-none"
+      />
       <div className="max-w-3xl mx-auto relative z-10" style={{ color: BROWN }}>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

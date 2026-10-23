@@ -9,6 +9,7 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
   const venues = [
     {
       id: 'ceremony',
+      hall: "Grand Ballroom",
       name: "Raffles",
       city: "Nugegoda",
       liveLocationUrl: "https://share.google/Njhd8xVJRSZuXxl4t",
@@ -31,7 +32,10 @@ export const Location: React.FC<LocationProps> = ({ event = 'both' }) => {
             <h2 className="font-['Cormorant_Garamond',_serif] text-5xl md:text-7xl text-brand-ink leading-none mb-6">
               {venue.label}
             </h2>
-            <p className="font-['Pinyon_Script',_cursive] text-[38px] md:text-[50px] text-brand-ink mt-6 leading-none">
+            <p className="font-['Cormorant_Garamond',_serif] text-brand-ink text-lg md:text-xl mt-6 uppercase tracking-[0.25em] font-semibold">
+              {venue.hall}
+            </p>
+            <p className="font-['Pinyon_Script',_cursive] text-[38px] md:text-[50px] text-brand-ink mt-3 leading-none">
               {venue.name}
             </p>
             <p className="font-['Cormorant_Garamond',_serif] text-brand-ink/70 text-base md:text-lg mt-4 uppercase tracking-[0.15em]">
