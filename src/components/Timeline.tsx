@@ -30,9 +30,6 @@ export const Timeline = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-10 md:mb-16 relative"
         >
-          <span className="block font-['Cormorant_Garamond',_serif] uppercase tracking-[0.4em] text-xs sm:text-sm font-semibold mb-4">
-            Agenda
-          </span>
           <h2 className="relative z-10 font-['Pinyon_Script',_cursive] text-6xl md:text-7xl leading-none pb-2" style={GOLD_TEXT}>
             The Day
           </h2>

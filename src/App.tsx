@@ -4,19 +4,19 @@ import { Toaster } from 'sonner';
 import { InvitationContent } from './components/InvitationContent';
 import { Admin } from './components/Admin';
 import { INVITATION_IMAGE_URLS, preloadImages } from './utils/preloadImages';
+import { readGuestFromLocation } from './utils/guest';
 
-const isAdminRoute = () => window.location.pathname === '/admin';
+const isAdminRoute = () => window.location.pathname.replace(/\/+$/, '') === '/admin';
 
 export default function App() {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const params = new URLSearchParams(window.location.search);
-  const titleParam = params.get('title') || '';
-  const nameParam = params.get('name') || '';
   const eventParam = params.get('event') || 'both';
 
-  const fullInviteeName = `${titleParam} ${nameParam}`.trim();
+  // Personal links: /{guestName}?p={prefix} (older ?title=&name= links still work)
+  const fullInviteeName = readGuestFromLocation();
 
   let eventLabel = 'Our Wedding Celebration';
 

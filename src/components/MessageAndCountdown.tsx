@@ -6,7 +6,7 @@ import { GOLD, GOLD_TEXT } from '../utils/gold';
 const FAMILIES_BG = '/families-bg.jpg';
 const BROWN = '#4a2c1d';
 
-export const FamiliesMessage: React.FC = () => {
+export const FamiliesMessage: React.FC<{ guestName?: string }> = ({ guestName }) => {
   return (
     <div className="relative w-full flex flex-col">
       {/* Top Message Section */}
@@ -32,9 +32,26 @@ export const FamiliesMessage: React.FC = () => {
             <h2 className="font-['Pinyon_Script',_cursive] text-6xl sm:text-7xl md:text-8xl pb-2" style={GOLD_TEXT}>Thilina</h2>
           </div>
 
-          <p className="mt-6 sm:mt-8 font-['Cormorant_Garamond',_serif] italic text-xl sm:text-2xl leading-relaxed max-w-sm">
-            invite you to celebrate<br />the beginning of their forever.
-          </p>
+          {guestName ? (
+            <div className="mt-6 sm:mt-8 font-['Cormorant_Garamond',_serif] italic text-xl sm:text-2xl leading-relaxed max-w-sm">
+              <p>invite</p>
+              <p
+                className="not-italic font-['Pinyon_Script',_cursive] text-4xl sm:text-5xl leading-tight py-1 px-2 break-words"
+                style={GOLD_TEXT}
+              >
+                {guestName}
+              </p>
+              <p>
+                to celebrate
+                <br />
+                the beginning of their forever.
+              </p>
+            </div>
+          ) : (
+            <p className="mt-6 sm:mt-8 font-['Cormorant_Garamond',_serif] italic text-xl sm:text-2xl leading-relaxed max-w-sm">
+              invite you to celebrate<br />the beginning of their forever.
+            </p>
+          )}
 
           {/* Wavy divider */}
           <svg viewBox="0 0 240 16" className="w-48 sm:w-60 h-4 mt-7 sm:mt-10" aria-hidden="true">

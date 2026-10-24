@@ -3,17 +3,29 @@ import { motion } from 'motion/react';
 import { Heart } from 'lucide-react';
 
 const INK = '#1c1917';
+const BRONZE = '#74492a';
+// Bronze gradient text. Padding gives script swashes room to stay inside the painted area.
+const BRONZE_TEXT: React.CSSProperties = {
+  backgroundImage: 'linear-gradient(135deg, #4e3015 0%, #74492a 35%, #a5703f 55%, #643d1c 100%)',
+  WebkitBackgroundClip: 'text',
+  backgroundClip: 'text',
+  color: 'transparent',
+  padding: '0.12em 0.25em',
+  margin: '-0.12em -0.25em',
+};
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 /** Script text revealed left-to-right, as if being handwritten. */
-const Written: React.FC<{ delay: number; duration?: number; className?: string; children: React.ReactNode }> = ({
-  delay,
-  duration = 1.4,
-  className,
-  children,
-}) => (
+const Written: React.FC<{
+  delay: number;
+  duration?: number;
+  className?: string;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+}> = ({ delay, duration = 1.4, className, style, children }) => (
   <motion.span
     className={`inline-block ${className ?? ''}`}
+    style={style}
     // Negative insets leave room for swashes and descenders
     initial={{ clipPath: 'inset(-25% 105% -25% -10%)', opacity: 0 }}
     animate={{ clipPath: 'inset(-25% -10% -25% -10%)', opacity: 1 }}
@@ -62,17 +74,17 @@ export const SaveTheDate = () => {
   return (
     <div className="flex flex-col items-center w-[min(78vw,26rem)] -mt-6" style={{ color: INK }}>
       {/* Save the Date */}
-      <div className="self-start pl-[6%] leading-none">
-        <p className="font-['Pinyon_Script',_cursive] text-[clamp(2.75rem,7vh,4.25rem)] leading-[0.9]">
-          <Written delay={0.2}>Save</Written>
+      <div className="self-center leading-none">
+        <p className="font-['Pinyon_Script',_cursive] text-[clamp(3.25rem,8.5vh,5rem)] leading-[0.9]">
+          <Written delay={0.2} style={BRONZE_TEXT}>Save</Written>
         </p>
-        <p className="font-['Cormorant_Garamond',_serif] italic text-[clamp(1.25rem,3vh,1.875rem)] pl-[3.5em] -mt-1">
+        <p className="font-['Cormorant_Garamond',_serif] italic text-[clamp(1.4rem,3.4vh,2.1rem)] pl-[3.5em] -mt-1" style={{ color: BRONZE }}>
           <Letters text="the" delay={1.1} stagger={0.08} />
         </p>
-        <p className="font-['Pinyon_Script',_cursive] text-[clamp(2.75rem,7vh,4.25rem)] leading-[0.9] pl-[1.6em] flex items-center gap-2">
-          <Written delay={1.4}>Date</Written>
+        <p className="font-['Pinyon_Script',_cursive] text-[clamp(3.25rem,8.5vh,5rem)] leading-[0.9] pl-[1.6em] flex items-center gap-2">
+          <Written delay={1.4} style={BRONZE_TEXT}>Date</Written>
           <Pop delay={2.6}>
-            <Heart className="w-4 h-4 sm:w-5 sm:h-5 mt-3" strokeWidth={1.5} />
+            <Heart className="w-4 h-4 sm:w-5 sm:h-5 mt-3" strokeWidth={1.5} style={{ color: BRONZE }} />
           </Pop>
         </p>
       </div>
@@ -102,13 +114,13 @@ export const SaveTheDate = () => {
 
       {/* Names & date */}
       <p className="mt-[3vh] font-['Pinyon_Script',_cursive] text-[clamp(2rem,4.8vh,2.75rem)] leading-none text-center">
-        <Written delay={3.4} duration={1.8}>
+        <Written delay={3.4} duration={1.8} style={BRONZE_TEXT}>
           Adeesha <span className="font-['Cormorant_Garamond',_serif] italic text-[0.6em] align-middle">&amp;</span> Thilina
         </Written>
       </p>
       <span className="my-[1.4vh]">
         <Pop delay={5.0}>
-          <Heart className="w-3.5 h-3.5 fill-current" />
+          <Heart className="w-3.5 h-3.5 fill-current" style={{ color: BRONZE }} />
         </Pop>
       </span>
       <p className="font-['Cinzel',_serif] text-sm sm:text-base tracking-[0.35em] pl-[0.35em]">

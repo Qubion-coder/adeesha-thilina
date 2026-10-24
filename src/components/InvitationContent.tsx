@@ -11,7 +11,6 @@ import { FloatingPetals } from './FloatingPetals';
 import { LoveQuote } from './LoveQuote';
 import { OurBeginning } from './OurBeginning';
 
-import { InviteeBanner } from './InviteeBanner';
 import { DeferredMount } from './DeferredMount';
 
 interface InvitationContentProps {
@@ -64,14 +63,8 @@ export function InvitationContent({
 
       <LoveQuote />
 
-      {fullInviteeName && (
-        <DeferredMount active={active} delay={80}>
-          <InviteeBanner inviteeName={fullInviteeName} eventLabel={eventLabel} />
-        </DeferredMount>
-      )}
-
       <DeferredMount active={active} delay={100} minHeight="40vh">
-        <FamiliesMessage />
+        <FamiliesMessage guestName={fullInviteeName} />
       </DeferredMount>
 
       <DeferredMount active={active} delay={140} minHeight="30vh">
