@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle, Loader2, Heart } from 'lucide-react';
 import { toast } from 'sonner';
+import { sendRsvp } from '../utils/rsvp';
 
 interface RSVPFormProps {
   inviteeName?: string;
@@ -13,13 +14,12 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ inviteeName = '', eventName 
   const searchParams = new URLSearchParams(window.location.search);
   const guestsParam = searchParams.get('guests') || '1';
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{ fullName: string; attendance: 'yes' | 'no'; guests: string }>({
     fullName: inviteeName,
     attendance: 'yes',
     guests: guestsParam,
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbxyOLqbPCF84tUg299jIyA0GuebtYFra-3C-CXxzE851QIQkOs1RRrqBKyYqP6NCSO-/exec";
 
   useEffect(() => {
     if (inviteeName) {
@@ -32,19 +32,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ inviteeName = '', eventName 
     setStatus('loading');
 
     try {
-      const payload = new FormData();
-      payload.append('sheet', 'RSVP');
-      payload.append('fullName', formData.fullName);
-      payload.append('attendance', formData.attendance);
-      payload.append('guests', formData.attendance === 'yes' ? formData.guests : '0'); 
-      payload.append('thoughts', ''); 
-      payload.append('dietaryNotes', ''); 
-
-      await fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: payload,
-      });
+      await sendRsvp({ ...formData, invitedAs: inviteeName });
 
       setStatus('success');
       toast.success('Your RSVP has been warmly received!');

@@ -1,111 +1,123 @@
-const SPREADSHEET_ID = '1IYsTHUnfOIHGcwQvoTcjOc5X2wKZJDIrqxqxXtpVpZY';
+/**
+ * Adeesha & Thilina — RSVP endpoint
+ * Spreadsheet: https://docs.google.com/spreadsheets/d/1C6UGnFFZWreYxWQZ3AHu7HjxNeQ7yfwIfZ-ev-l6SEY/edit
+ *
+ * The "RSVP" tab and its headers are created automatically on the first
+ * response (or run setup() once from the editor to create them now).
+ */
 
+const SPREADSHEET_ID = '1C6UGnFFZWreYxWQZ3AHu7HjxNeQ7yfwIfZ-ev-l6SEY';
+const SHEET_NAME = 'RSVP';
+
+const HEADERS = [
+  'Timestamp',
+  'Full Name',
+  'Attending',
+  'Number of Guests',
+  'Invited As',
+  'Invitation Link',
+];
+
+const COLUMN_WIDTHS = [170, 220, 100, 140, 220, 320];
+
+const HEADER_BG = '#4a2c1d';
+const HEADER_FG = '#faf6f1';
+
+/** Receives RSVP submissions from the website. */
 function doPost(e) {
+  const lock = LockService.getScriptLock();
   try {
-    const payload = parsePayload_(e);
-    const sheetKey = String(payload.sheet || '').toUpperCase();
+    lock.waitLock(10000); // avoid two guests writing the same row at once
 
-    if (sheetKey !== 'RSVP' && sheetKey !== 'WISH') {
-      return jsonResponse_({ ok: false, error: 'Invalid sheet. Use RSVP or WISH.' });
+    const data = (e && e.parameter) || {};
+    const fullName = clean_(data.fullName);
+    if (!fullName) {
+      return json_({ ok: false, error: 'Full name is required.' });
     }
 
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    const sheet = getOrCreateSheet_(ss, sheetKey);
+    const attending = String(data.attendance).toLowerCase() === 'no' ? 'No' : 'Yes';
+    const guests = attending === 'Yes' ? Math.max(1, parseInt(data.guests, 10) || 1) : 0;
 
-    if (sheetKey === 'RSVP') {
-      ensureHeaders_(sheet, ['Timestamp', 'Full Name', 'Guests', 'Event', 'Dietary Notes']);
-      sheet.appendRow([
-        new Date(),
-        payload.fullName || '',
-        payload.guests || '',
-        payload.event || '',
-        payload.dietaryNotes || '',
-      ]);
-    } else {
-      ensureHeaders_(sheet, ['Timestamp', 'Name', 'Event', 'Message']);
-      sheet.appendRow([
-        new Date(),
-        payload.name || '',
-        payload.event || '',
-        payload.message || '',
-      ]);
-    }
+    const sheet = getSheet_();
+    sheet.appendRow([
+      new Date(),
+      fullName,
+      attending,
+      guests,
+      clean_(data.invitedAs),
+      clean_(data.pageUrl),
+    ]);
 
-    return jsonResponse_({ ok: true });
-  } catch (error) {
-    return jsonResponse_({
-      ok: false,
-      error: String(error && error.message ? error.message : error),
-    });
+    // Colour the Attending cell so replies are easy to scan
+    const row = sheet.getLastRow();
+    sheet
+      .getRange(row, 3)
+      .setBackground(attending === 'Yes' ? '#e6f4ea' : '#fce8e6')
+      .setFontColor(attending === 'Yes' ? '#137333' : '#a50e0e')
+      .setHorizontalAlignment('center');
+    sheet.getRange(row, 4).setHorizontalAlignment('center');
+
+    return json_({ ok: true });
+  } catch (err) {
+    return json_({ ok: false, error: String((err && err.message) || err) });
+  } finally {
+    try {
+      lock.releaseLock();
+    } catch (_) {}
   }
 }
 
+/** Visiting the Web App URL in a browser shows this — handy to confirm it is live. */
 function doGet() {
-  return jsonResponse_({
-    ok: true,
-    message: 'Wedding form endpoint is running.',
-  });
+  return json_({ ok: true, message: 'RSVP endpoint is running.' });
 }
 
-function parsePayload_(e) {
-  const params = e && e.parameter ? e.parameter : {};
-
-  if (Object.keys(params).length > 0) {
-    return params;
-  }
-
-  const contents = e && e.postData && e.postData.contents ? e.postData.contents : '';
-  if (!contents) {
-    return {};
-  }
-
-  if (contents.indexOf('=') !== -1 && contents.indexOf('{') !== 0) {
-    return parseQueryString_(contents);
-  }
-
-  try {
-    return JSON.parse(contents);
-  } catch (_error) {
-    return {};
-  }
+/** Optional: run once from the Apps Script editor to create the RSVP tab and headers now. */
+function setup() {
+  getSheet_();
 }
 
-function parseQueryString_(query) {
-  const out = {};
-  const pairs = String(query).split('&');
-
-  for (let i = 0; i < pairs.length; i++) {
-    const part = pairs[i];
-    if (!part) continue;
-
-    const idx = part.indexOf('=');
-    const rawKey = idx >= 0 ? part.slice(0, idx) : part;
-    const rawValue = idx >= 0 ? part.slice(idx + 1) : '';
-    const key = decodeURIComponent(rawKey.replace(/\+/g, ' '));
-    const value = decodeURIComponent(rawValue.replace(/\+/g, ' '));
-
-    out[key] = value;
-  }
-
-  return out;
-}
-
-function getOrCreateSheet_(ss, name) {
-  let sheet = ss.getSheetByName(name);
+/** Returns the RSVP tab, creating it and its formatted header row if needed. */
+function getSheet_() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  let sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) {
-    sheet = ss.insertSheet(name);
+    sheet = ss.insertSheet(SHEET_NAME);
   }
+
+  const headerRange = sheet.getRange(1, 1, 1, HEADERS.length);
+  const current = headerRange.getValues()[0];
+  const hasHeaders = HEADERS.every(function (h, i) {
+    return current[i] === h;
+  });
+
+  if (!hasHeaders) {
+    if (sheet.getLastRow() > 0 && String(current[0]) !== '') {
+      sheet.insertRowBefore(1); // keep any existing data below the new header
+    }
+    sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+    sheet
+      .getRange(1, 1, 1, HEADERS.length)
+      .setFontWeight('bold')
+      .setBackground(HEADER_BG)
+      .setFontColor(HEADER_FG)
+      .setHorizontalAlignment('center')
+      .setVerticalAlignment('middle');
+    sheet.setRowHeight(1, 32);
+    sheet.setFrozenRows(1);
+    COLUMN_WIDTHS.forEach(function (w, i) {
+      sheet.setColumnWidth(i + 1, w);
+    });
+    sheet.getRange('A:A').setNumberFormat('dd MMM yyyy, hh:mm a');
+  }
+
   return sheet;
 }
 
-function ensureHeaders_(sheet, headers) {
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(headers);
-  }
+function clean_(value) {
+  return String(value == null ? '' : value).trim().slice(0, 500);
 }
 
-function jsonResponse_(data) {
-  return ContentService
-    .createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON);
+function json_(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
 }
